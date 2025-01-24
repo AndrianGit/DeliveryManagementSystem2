@@ -1,0 +1,155 @@
+﻿@page
+@model DeliveryManagementSystem2.Pages.OrderManage.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+ <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #444;
+            text-align: center;
+            margin-top: 40px;
+            font-size: 2.5rem;
+        }
+
+        h4 {
+            font-size: 1.8rem;
+            color: #444;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .form-group .text-danger {
+            color: #d9534f;
+            font-size: 0.875rem;
+        }
+
+        .btn {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .back-link {
+            text-align: center;
+            display: block;
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-top: 40px;
+        }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .form-group input {
+                padding: 10px;
+            }
+
+            .btn {
+                padding: 8px 12px;
+            }
+        }
+    </style>
+<div class="container">
+    <h1>Create Order</h1>
+    <hr />
+    <h4>Order</h4>
+    <hr />
+    <form method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label asp-for="Order.OrderNumber" class="control-label">Order Number</label>
+            <input asp-for="Order.OrderNumber" class="form-control" />
+            <span asp-validation-for="Order.OrderNumber" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Order.CustomerName" class="control-label">Customer Name</label>
+            <input asp-for="Order.CustomerName" class="form-control" />
+            <span asp-validation-for="Order.CustomerName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Order.OrderDate" class="control-label">Order Date</label>
+            <input asp-for="Order.OrderDate" class="form-control" />
+            <span asp-validation-for="Order.OrderDate" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Order.OrderStatus" class="control-label">Order Status</label>
+            <input asp-for="Order.OrderStatus" class="form-control" />
+            <span asp-validation-for="Order.OrderStatus" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Order.DeliveryAddress" class="control-label">Delivery Address</label>
+            <input asp-for="Order.DeliveryAddress" class="form-control" />
+            <span asp-validation-for="Order.DeliveryAddress" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn" />
+        </div>
+    </form>
+
+    <a asp-page="Index" class="back-link">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

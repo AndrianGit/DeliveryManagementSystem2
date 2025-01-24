@@ -1,0 +1,137 @@
+﻿@page
+@model DeliveryManagementSystem2.Pages.OrderManage.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #444;
+            text-align: center;
+            margin-top: 40px;
+            font-size: 2.5rem;
+        }
+
+        p {
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        .table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .table th, .table td {
+            padding: 12px 20px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .table th {
+            background-color: #007bff;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .table td a {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+
+        .table td a:hover {
+            text-decoration: underline;
+        }
+
+        .text-center {
+            text-align: center;
+            color: #d9534f;
+            font-size: 1.1rem;
+            padding: 20px;
+            font-weight: bold;
+        }
+
+        .btn {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+            .table {
+                width: 100%;
+                margin: 10px;
+            }
+
+            .table th, .table td {
+                padding: 8px 12px;
+            }
+        }
+    </style>
+<h1>Delivery Management System</h1>
+
+<p>
+    <a asp-page="Create" class="btn">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Order[0].OrderNumber)</th>
+            <th>@Html.DisplayNameFor(model => model.Order[0].CustomerName)</th>
+            <th>@Html.DisplayNameFor(model => model.Order[0].OrderDate)</th>
+            <th>@Html.DisplayNameFor(model => model.Order[0].OrderStatus)</th>
+            <th>@Html.DisplayNameFor(model => model.Order[0].DeliveryAddress)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Order) {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.OrderNumber)</td>
+                <td>@Html.DisplayFor(modelItem => item.CustomerName)</td>
+                <td>@Html.DisplayFor(modelItem => item.OrderDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.OrderStatus)</td>
+                <td>@Html.DisplayFor(modelItem => item.DeliveryAddress)</td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+        @if (!Model.Order.Any())
+        {
+            <tr>
+                <td colspan="6" class="text-center">
+                    No deliveries available in the database.
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
